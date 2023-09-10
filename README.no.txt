@@ -19,4 +19,6 @@ Følgende konfigurasjon kan/må settes opp på enheten:
 
 Data hentes fra Kystverket via Barentswatch sine Live AIS API.
 
+Kildekoden er tilgjengelig her: https://github.com/arneunneland/homey-passing-ships
+
 

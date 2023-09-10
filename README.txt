@@ -21,3 +21,5 @@ You must enter a GeoJSON that describes the area you will monitor. This should n
 -- You should insert part of the GeoJSON into the configuration. Refer to the example and match the format.
 
 Data is retrieved from the Norwegian Coastal Administration via Barentswatch's Live AIS API.
+
+Source code is available here: https://github.com/arneunneland/homey-passing-ships
