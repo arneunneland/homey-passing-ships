@@ -1,0 +1,9 @@
+{
+    "type": "string",
+    "title": { "en": "Bearing", "no": "Retning" },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "uiQuickAction": false,
+    "icon": "/assets/icon.svg"
+  }

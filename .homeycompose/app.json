@@ -1,0 +1,39 @@
+{
+  "id": "com.unneland.passing-ships",
+  "version": "0.9.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Passing Ships - Norway",
+    "no": "Passerende Skip"
+  },
+  "description": {
+    "en": "Adds support for Passing Ships in Norway. AIS data from Norwegian Coastal Administration and Barentswatch",
+    "no": "Gir varsel om passerede skip. AIS data hentes fra Kystverket via Barentswatch"
+  },
+  "category": [
+    "localization"
+  ],
+  "api": {
+    "log": {
+      "method": "GET",
+      "path": "/log"
+    }
+  },
+  "permissions": [
+    "homey:manager:geolocation"
+  ],
+  "brandColor": "#0066ff",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Arne Unneland",
+    "email": "arne.unneland@gmail.com"
+  }
+}

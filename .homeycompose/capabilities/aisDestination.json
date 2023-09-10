@@ -1,0 +1,9 @@
+{
+    "type": "string",
+    "title": { "en": "Destination", "no": "Destinasjon" },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "uiQuickAction": false,
+    "icon": "/assets/icon.svg"
+  }

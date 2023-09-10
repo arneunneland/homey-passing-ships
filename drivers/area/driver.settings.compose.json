@@ -1,0 +1,37 @@
+[
+    {
+        "id": "clientId",
+        "type": "text",
+        "label": { "en": "Barentswatch Client ID" },
+        "value": "",
+        "hint": { "en": "Client ID from BW Mypage. Format: john.doe@example.com:SampleAisClientKey" }
+    },
+    {
+        "id": "clientSecret",
+        "type": "text",
+        "label": { "en": "Barentswatch Client Secret" },
+        "value": "",
+        "hint": { "en": "Client Secret from BW Mypage. Format: N9aQ7wZkD8rE" }
+    },
+    {
+        "id": "longitude",
+        "type": "text",
+        "label": { "en": "Longitude" },
+        "value": "",
+        "hint": { "en": "Longitude of the position - Overrides Homey position" }
+    },
+    {
+        "id": "latitude",
+        "type": "text",
+        "label": { "en": "Latitude" },
+        "value": "",
+        "hint": { "en": "Longitude of the position - Overrides Homey position" }
+    },
+    {
+        "id": "area",
+        "type": "textarea",
+        "label": { "en": "Area (polygon)" },
+        "value": "",
+        "hint": { "en": "Paste GeoJSON. See example in app description" }
+    }
+]

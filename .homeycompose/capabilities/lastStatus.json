@@ -1,0 +1,9 @@
+{
+    "type": "string",
+    "title": { "en": "Last status", "no": "Siste status" },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "uiQuickAction": false,
+    "icon": "/assets/icon.svg"
+  }

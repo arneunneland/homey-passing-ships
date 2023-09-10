@@ -1,0 +1,659 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.unneland.passing-ships",
+  "version": "0.9.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Passing Ships - Norway",
+    "no": "Passerende Skip"
+  },
+  "description": {
+    "en": "Adds support for Passing Ships in Norway. AIS data from Norwegian Coastal Administration and Barentswatch",
+    "no": "Gir varsel om passerede skip. AIS data hentes fra Kystverket via Barentswatch"
+  },
+  "category": [
+    "localization"
+  ],
+  "api": {
+    "log": {
+      "method": "GET",
+      "path": "/log"
+    }
+  },
+  "permissions": [
+    "homey:manager:geolocation"
+  ],
+  "brandColor": "#0066ff",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Arne Unneland",
+    "email": "arne.unneland@gmail.com"
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "passingShipName",
+        "title": {
+          "en": "Passing ship",
+          "no": "Passerende skip"
+        },
+        "titleFormatted": {
+          "en": "[[name]] is passing"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=area"
+          },
+          {
+            "type": "text",
+            "name": "name",
+            "title": {
+              "en": "Name of ship"
+            },
+            "placeholder": {
+              "en": "Bruvik"
+            }
+          }
+        ],
+        "tokens": [
+          {
+            "name": "name",
+            "type": "string",
+            "title": {
+              "en": "Name of ship"
+            },
+            "example": {
+              "en": "Bruvik"
+            }
+          },
+          {
+            "name": "course",
+            "type": "string",
+            "title": {
+              "en": "Course"
+            },
+            "example": {
+              "en": "V"
+            }
+          },
+          {
+            "name": "comingFrom",
+            "type": "string",
+            "title": {
+              "en": "Coming from"
+            },
+            "example": {
+              "en": "Ø"
+            }
+          },
+          {
+            "name": "length",
+            "type": "number",
+            "title": {
+              "en": "Length in m"
+            },
+            "example": {
+              "en": "13"
+            }
+          },
+          {
+            "name": "speed",
+            "type": "number",
+            "title": {
+              "en": "Speed in kn"
+            },
+            "example": {
+              "en": "12.4"
+            }
+          }
+        ]
+      },
+      {
+        "id": "passingShipComingFrom",
+        "title": {
+          "en": "Passing ship",
+          "no": "Passerende skip"
+        },
+        "titleFormatted": {
+          "en": "Ship is passing from [[comingFrom]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=area"
+          },
+          {
+            "type": "text",
+            "name": "comingFrom",
+            "title": {
+              "en": "From direction"
+            },
+            "placeholder": {
+              "en": "Ø"
+            }
+          }
+        ],
+        "tokens": [
+          {
+            "name": "name",
+            "type": "string",
+            "title": {
+              "en": "Name of ship"
+            },
+            "example": {
+              "en": "Bruvik"
+            }
+          },
+          {
+            "name": "course",
+            "type": "string",
+            "title": {
+              "en": "Course"
+            },
+            "example": {
+              "en": "V"
+            }
+          },
+          {
+            "name": "comingFrom",
+            "type": "string",
+            "title": {
+              "en": "Coming from"
+            },
+            "example": {
+              "en": "Ø"
+            }
+          },
+          {
+            "name": "length",
+            "type": "number",
+            "title": {
+              "en": "Length in m"
+            },
+            "example": {
+              "en": "13"
+            }
+          },
+          {
+            "name": "speed",
+            "type": "number",
+            "title": {
+              "en": "Speed in kn"
+            },
+            "example": {
+              "en": "12.4"
+            }
+          }
+        ]
+      },
+      {
+        "id": "passingShipSpeed",
+        "title": {
+          "en": "Passing ship",
+          "no": "Passerende skip"
+        },
+        "titleFormatted": {
+          "en": "Ship is passing at speed over [[speed]] kn"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=area"
+          },
+          {
+            "type": "number",
+            "name": "speed",
+            "title": {
+              "en": "Speed over kn"
+            },
+            "placeholder": {
+              "en": "10"
+            }
+          }
+        ],
+        "tokens": [
+          {
+            "name": "name",
+            "type": "string",
+            "title": {
+              "en": "Name of ship"
+            },
+            "example": {
+              "en": "Bruvik"
+            }
+          },
+          {
+            "name": "course",
+            "type": "string",
+            "title": {
+              "en": "Course"
+            },
+            "example": {
+              "en": "V"
+            }
+          },
+          {
+            "name": "comingFrom",
+            "type": "string",
+            "title": {
+              "en": "Coming from"
+            },
+            "example": {
+              "en": "Ø"
+            }
+          },
+          {
+            "name": "length",
+            "type": "number",
+            "title": {
+              "en": "Length in m"
+            },
+            "example": {
+              "en": "13"
+            }
+          },
+          {
+            "name": "speed",
+            "type": "number",
+            "title": {
+              "en": "Speed in kn"
+            },
+            "example": {
+              "en": "12.4"
+            }
+          }
+        ]
+      },
+      {
+        "id": "passingShipLength",
+        "title": {
+          "en": "Passing ship",
+          "no": "Passerende skip"
+        },
+        "titleFormatted": {
+          "en": "Ship is passing with length over [[length]] m"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=area"
+          },
+          {
+            "type": "number",
+            "name": "length",
+            "title": {
+              "en": "Length over m"
+            },
+            "placeholder": {
+              "en": "11"
+            }
+          }
+        ],
+        "tokens": [
+          {
+            "name": "name",
+            "type": "string",
+            "title": {
+              "en": "Name of ship"
+            },
+            "example": {
+              "en": "Bruvik"
+            }
+          },
+          {
+            "name": "course",
+            "type": "string",
+            "title": {
+              "en": "Course"
+            },
+            "example": {
+              "en": "V"
+            }
+          },
+          {
+            "name": "comingFrom",
+            "type": "string",
+            "title": {
+              "en": "Coming from"
+            },
+            "example": {
+              "en": "Ø"
+            }
+          },
+          {
+            "name": "length",
+            "type": "number",
+            "title": {
+              "en": "Length in m"
+            },
+            "example": {
+              "en": "13"
+            }
+          },
+          {
+            "name": "speed",
+            "type": "number",
+            "title": {
+              "en": "Speed in kn"
+            },
+            "example": {
+              "en": "12.4"
+            }
+          }
+        ]
+      },
+      {
+        "id": "passingShip",
+        "title": {
+          "en": "Passing ship",
+          "no": "Passerende skip"
+        },
+        "titleFormatted": {
+          "en": "Ship is passing"
+        },
+        "tokens": [
+          {
+            "name": "name",
+            "type": "string",
+            "title": {
+              "en": "Name of ship"
+            },
+            "example": {
+              "en": "Bruvik"
+            }
+          },
+          {
+            "name": "course",
+            "type": "string",
+            "title": {
+              "en": "Course"
+            },
+            "example": {
+              "en": "V"
+            }
+          },
+          {
+            "name": "comingFrom",
+            "type": "string",
+            "title": {
+              "en": "Coming from"
+            },
+            "example": {
+              "en": "Ø"
+            }
+          },
+          {
+            "name": "length",
+            "type": "number",
+            "title": {
+              "en": "Length in m"
+            },
+            "example": {
+              "en": "13"
+            }
+          },
+          {
+            "name": "speed",
+            "type": "number",
+            "title": {
+              "en": "Speed in kn"
+            },
+            "example": {
+              "en": "12.4"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=area"
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Ship area",
+        "no": "Skipsområde"
+      },
+      "class": "other",
+      "capabilities": [
+        "numberOfShips",
+        "currentMovingShips",
+        "closestShip",
+        "closestShipBearing",
+        "closestShipCourse",
+        "lastStatus",
+        "shipLength",
+        "shipWidth",
+        "aisDestination",
+        "shipType"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/area/assets/images/small.png",
+        "large": "/drivers/area/assets/images/large.png",
+        "xlarge": "/drivers/area/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "list_my_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_my_devices"
+          }
+        },
+        {
+          "id": "add_my_devices",
+          "template": "add_devices",
+          "navigation": {
+            "next": "done"
+          }
+        },
+        {
+          "id": "done",
+          "template": "done"
+        }
+      ],
+      "id": "area",
+      "settings": [
+        {
+          "id": "clientId",
+          "type": "text",
+          "label": {
+            "en": "Barentswatch Client ID"
+          },
+          "value": "",
+          "hint": {
+            "en": "Client ID from BW Mypage. Format: john.doe@example.com:SampleAisClientKey"
+          }
+        },
+        {
+          "id": "clientSecret",
+          "type": "text",
+          "label": {
+            "en": "Barentswatch Client Secret"
+          },
+          "value": "",
+          "hint": {
+            "en": "Client Secret from BW Mypage. Format: N9aQ7wZkD8rE"
+          }
+        },
+        {
+          "id": "longitude",
+          "type": "text",
+          "label": {
+            "en": "Longitude"
+          },
+          "value": "",
+          "hint": {
+            "en": "Longitude of the position - Overrides Homey position"
+          }
+        },
+        {
+          "id": "latitude",
+          "type": "text",
+          "label": {
+            "en": "Latitude"
+          },
+          "value": "",
+          "hint": {
+            "en": "Longitude of the position - Overrides Homey position"
+          }
+        },
+        {
+          "id": "area",
+          "type": "textarea",
+          "label": {
+            "en": "Area (polygon)"
+          },
+          "value": "",
+          "hint": {
+            "en": "Paste GeoJSON. See example in app description"
+          }
+        }
+      ]
+    }
+  ],
+  "capabilities": {
+    "aisDestination": {
+      "type": "string",
+      "title": {
+        "en": "Destination",
+        "no": "Destinasjon"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/icon.svg"
+    },
+    "closestShip": {
+      "type": "string",
+      "title": {
+        "en": "Closest ship",
+        "no": "Nærmeste skip"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/icon.svg"
+    },
+    "closestShipBearing": {
+      "type": "string",
+      "title": {
+        "en": "Bearing",
+        "no": "Retning"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/icon.svg"
+    },
+    "closestShipCourse": {
+      "type": "string",
+      "title": {
+        "en": "Course",
+        "no": "Kurs"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/icon.svg"
+    },
+    "currentMovingShips": {
+      "type": "number",
+      "title": {
+        "en": "Moving ships",
+        "no": "Skip i fart"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/icon.svg"
+    },
+    "lastStatus": {
+      "type": "string",
+      "title": {
+        "en": "Last status",
+        "no": "Siste status"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/icon.svg"
+    },
+    "numberOfShips": {
+      "type": "number",
+      "title": {
+        "en": "Ships",
+        "no": "Antall skip"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/icon.svg"
+    },
+    "shipLength": {
+      "type": "number",
+      "title": {
+        "en": "Length",
+        "no": "Lengde"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/icon.svg"
+    },
+    "shipType": {
+      "type": "string",
+      "title": {
+        "en": "Type",
+        "no": "Type"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/icon.svg"
+    },
+    "shipWidth": {
+      "type": "number",
+      "title": {
+        "en": "Width",
+        "no": "Bredde"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/icon.svg"
+    }
+  }
+}

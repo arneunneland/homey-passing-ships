@@ -1,0 +1,9 @@
+{
+    "type": "number",
+    "title": { "en": "Ships", "no": "Antall skip" },
+    "getable": true,
+    "setable": false,
+    "uiComponent": "sensor",
+    "uiQuickAction": false,
+    "icon": "/assets/icon.svg"
+  }

@@ -1,0 +1,236 @@
+{
+  "triggers": [
+    {
+      "id": "passingShipName",
+      "title": {
+        "en": "Passing ship",
+        "no": "Passerende skip"
+      },
+      "titleFormatted": { "en": "[[name]] is passing" },
+      "args": [
+        {
+          "type": "text",
+          "name": "name",
+          "title": { "en": "Name of ship" },
+          "placeholder": { "en": "Bruvik" }
+        }
+      ],
+      "tokens": [
+        {
+          "name": "name",
+          "type": "string",
+          "title": { "en": "Name of ship" },
+          "example": { "en": "Bruvik" }
+        },
+        {
+          "name": "course",
+          "type": "string",
+          "title": { "en": "Course" },
+          "example": { "en": "V" }
+        },
+        {
+          "name": "comingFrom",
+          "type": "string",
+          "title": { "en": "Coming from" },
+          "example": { "en": "Ø" }
+        },
+        {
+          "name": "length",
+          "type": "number",
+          "title": { "en": "Length in m" },
+          "example": { "en": "13" }
+        },
+        {
+          "name": "speed",
+          "type": "number",
+          "title": { "en": "Speed in kn" },
+          "example": { "en": "12.4" }
+        }
+      ]
+    },
+    {
+      "id": "passingShipComingFrom",
+      "title": {
+        "en": "Passing ship",
+        "no": "Passerende skip"
+      },
+      "titleFormatted": { "en": "Ship is passing from [[comingFrom]]" },
+      "args": [
+        {
+          "type": "text",
+          "name": "comingFrom",
+          "title": { "en": "From direction" },
+          "placeholder": { "en": "Ø" }
+        }
+      ],
+      "tokens": [
+        {
+          "name": "name",
+          "type": "string",
+          "title": { "en": "Name of ship" },
+          "example": { "en": "Bruvik" }
+        },
+        {
+          "name": "course",
+          "type": "string",
+          "title": { "en": "Course" },
+          "example": { "en": "V" }
+        },
+        {
+          "name": "comingFrom",
+          "type": "string",
+          "title": { "en": "Coming from" },
+          "example": { "en": "Ø" }
+        },
+        {
+          "name": "length",
+          "type": "number",
+          "title": { "en": "Length in m" },
+          "example": { "en": "13" }
+        },
+        {
+          "name": "speed",
+          "type": "number",
+          "title": { "en": "Speed in kn" },
+          "example": { "en": "12.4" }
+        }
+      ]
+    },
+    {
+      "id": "passingShipSpeed",
+      "title": {
+        "en": "Passing ship",
+        "no": "Passerende skip"
+      },
+      "titleFormatted": { "en": "Ship is passing at speed over [[speed]] kn" },
+      "args": [
+        {
+          "type": "number",
+          "name": "speed",
+          "title": { "en": "Speed over kn" },
+          "placeholder": { "en": "10" }
+        }
+      ],
+      "tokens": [
+        {
+          "name": "name",
+          "type": "string",
+          "title": { "en": "Name of ship" },
+          "example": { "en": "Bruvik" }
+        },
+        {
+          "name": "course",
+          "type": "string",
+          "title": { "en": "Course" },
+          "example": { "en": "V" }
+        },
+        {
+          "name": "comingFrom",
+          "type": "string",
+          "title": { "en": "Coming from" },
+          "example": { "en": "Ø" }
+        },
+        {
+          "name": "length",
+          "type": "number",
+          "title": { "en": "Length in m" },
+          "example": { "en": "13" }
+        },
+        {
+          "name": "speed",
+          "type": "number",
+          "title": { "en": "Speed in kn" },
+          "example": { "en": "12.4" }
+        }
+      ]
+    },
+    {
+      "id": "passingShipLength",
+      "title": {
+        "en": "Passing ship",
+        "no": "Passerende skip"
+      },
+      "titleFormatted": { "en": "Ship is passing with length over [[length]] m" },
+      "args": [
+        {
+          "type": "number",
+          "name": "length",
+          "title": { "en": "Length over m" },
+          "placeholder": { "en": "11" }
+        }
+      ],
+      "tokens": [
+        {
+          "name": "name",
+          "type": "string",
+          "title": { "en": "Name of ship" },
+          "example": { "en": "Bruvik" }
+        },
+        {
+          "name": "course",
+          "type": "string",
+          "title": { "en": "Course" },
+          "example": { "en": "V" }
+        },
+        {
+          "name": "comingFrom",
+          "type": "string",
+          "title": { "en": "Coming from" },
+          "example": { "en": "Ø" }
+        },
+        {
+          "name": "length",
+          "type": "number",
+          "title": { "en": "Length in m" },
+          "example": { "en": "13" }
+        },
+        {
+          "name": "speed",
+          "type": "number",
+          "title": { "en": "Speed in kn" },
+          "example": { "en": "12.4" }
+        }
+      ]
+    },
+    {
+      "id": "passingShip",
+      "title": {
+        "en": "Passing ship",
+        "no": "Passerende skip"
+      },
+      "titleFormatted": { "en": "Ship is passing" },
+      "tokens": [
+        {
+          "name": "name",
+          "type": "string",
+          "title": { "en": "Name of ship" },
+          "example": { "en": "Bruvik" }
+        },
+        {
+          "name": "course",
+          "type": "string",
+          "title": { "en": "Course" },
+          "example": { "en": "V" }
+        },
+        {
+          "name": "comingFrom",
+          "type": "string",
+          "title": { "en": "Coming from" },
+          "example": { "en": "Ø" }
+        },
+        {
+          "name": "length",
+          "type": "number",
+          "title": { "en": "Length in m" },
+          "example": { "en": "13" }
+        },
+        {
+          "name": "speed",
+          "type": "number",
+          "title": { "en": "Speed in kn" },
+          "example": { "en": "12.4" }
+        }
+      ]
+    }
+  ]
+}
