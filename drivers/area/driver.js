@@ -22,7 +22,7 @@ class MyDriver extends Driver {
       return [];
     }
     return [{
-      name: "AIS Område",
+      name: "Passing ships",
     
       data: {
         id: randomUUID()

@@ -133,6 +133,9 @@ class AisFetcher {
         aisObj.logger('need new bearer token');
         this.fetchNewBearerToken = true;
       }
+      if(res.statusCode == 200) {
+        aisObj.lastAisData = Date.now();
+      }
       res.on('data', function (chunk) {
         if(res.statusCode == 200) {
           chunks.push(Buffer.from(chunk));
