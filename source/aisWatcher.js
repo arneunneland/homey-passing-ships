@@ -124,7 +124,7 @@ class AisWatcher {
       aisData.lastMoved = oldAisData.lastMoved;
     }
 
-    if (+aisData.speedOverGround > 0.2) {
+    if (+aisData.speedOverGround >= 1) {
       aisData.lastMoved = new Date();
 
       if (oldAisData) {
@@ -227,7 +227,7 @@ class AisWatcher {
     var numberOfShips = this.ships.size;
 
     for (var [key, value] of this.ships) {
-      if (+value.speedOverGround > 0.2) {
+      if (+value.speedOverGround >= 1) {
         currentMovingShips++;
         if (value.distance < closestShipDistance) {
           closestShip = value;
