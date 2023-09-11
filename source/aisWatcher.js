@@ -4,6 +4,7 @@ const EventEmitter = require('events');
 const AisFetcher = require('./aisFetcher.js');
 
 class AisWatcher {
+
   constructor(homey, logger, latitude, longitude, clientId, clientSecret, area) {
     this.eventEmitter = new EventEmitter()
     this.homey = homey;
@@ -100,10 +101,14 @@ class AisWatcher {
         }
       }
     });
-        
   }
 
   handleAis(aisData) {
+    var oldAisData = null;
+    if (this.ships.has(aisData.mmsi)) {
+      oldAisData = this.ships.get(aisData.mmsi);
+    }
+
     aisData.distance = this.getDistanceFromLatLonInKm(this.latitude, this.longitude, aisData.latitude, aisData.longitude);
     aisData.bearing = this.bearing(this.latitude, this.longitude, aisData.latitude, aisData.longitude);
     aisData.bearingAsText = this.getCourse(Math.trunc(aisData.bearing));
@@ -114,18 +119,26 @@ class AisWatcher {
     } else {
       aisData.courseAsText = "-";
     }
-    this.logger("AIS: " + aisData.name + ", " + aisData.bearing.toFixed(2) + ", " + aisData.bearingAsText + ", " + aisData.distance.toFixed(2) + ", " + aisData.speedOverGround + ", " + aisData.courseOverGround + ", " + aisData.courseAsText);
-    
+    if (oldAisData) {
+      aisData.lastNotified = oldAisData.lastNotified;
+      aisData.lastMoved = oldAisData.lastMoved;
+    }
+
     if (+aisData.speedOverGround > 0.2) {
-      if (!this.ships.has(aisData.mmsi)) {
-          this.triggerNewShip(aisData, false);
-      } else {
-        var oldAisData = this.ships.get(aisData.mmsi);
-        if (+oldAisData.speedOverGround <= 0.2) {
+      aisData.lastMoved = new Date();
+
+      if (oldAisData) {
+        if (oldAisData.lastMoved && (Date.now() - oldAisData.lastMoved > 600000)) {
           this.triggerNewShip(aisData, true);
         }
+      } else {
+        this.triggerNewShip(aisData, false);
       }
     }
+
+    const pad = (i) => (i < 10) ? "0" + i : "" + i;
+    const logDate = (date) => (date ? pad(date.getHours()) + ":" + pad(date.getMinutes()) + ":" + pad(date.getSeconds()) : "-");  
+    this.logger("AIS: " + aisData.name + ", " + aisData.bearing.toFixed(2) + ", " + aisData.bearingAsText + ", " + aisData.distance.toFixed(2) + ", " + aisData.speedOverGround + ", " + aisData.courseOverGround + ", " + aisData.courseAsText + ", " + logDate(aisData.lastMoved) + ", " + logDate(aisData.lastNotified));
     this.ships.set(aisData.mmsi, aisData);
 
     for (var [key, value] of this.ships) {
@@ -137,17 +150,31 @@ class AisWatcher {
   }
 
   triggerNewShip(aisData, wasStopped) {
-    this.logger("Detected new ship: " + aisData.name + ", " + aisData.bearing.toFixed(2) + ", " + aisData.bearingAsText + ", " + aisData.distance.toFixed(2) + ", " + aisData.speedOverGround + ", " + aisData.courseOverGround + ", " + aisData.courseAsText);
+    var notify = false;
+    if (aisData.lastNotified && (Date.now() - aisData.lastNotified > 600000)) {
+      notify = true;
+    }
+    if (!aisData.lastNotified) {
+      notify = true;
+    }
+    if (notify) {
+      this.logger("Detected new ship: " + aisData.name + ", " + aisData.bearing.toFixed(2) + ", " + aisData.bearingAsText + ", " + aisData.distance.toFixed(2) + ", " + aisData.speedOverGround + ", " + aisData.courseOverGround + ", " + aisData.courseAsText);
 
-    var data = { 
-        name: aisData.name, 
-        course: aisData.courseAsText, 
-        comingFrom: aisData.comingFromAsText,
-        speed: aisData.speedOverGround, 
-        length: aisData.shipLength,
-        wasStopped: wasStopped
-      };
-    this.eventEmitter.emit('passingship', data);
+      aisData.lastNotified = new Date();
+  
+      var data = { 
+          name: aisData.name, 
+          course: aisData.courseAsText, 
+          comingFrom: aisData.comingFromAsText,
+          speed: aisData.speedOverGround, 
+          length: aisData.shipLength,
+          wasStopped: wasStopped
+        };
+      this.eventEmitter.emit('passingship', data);
+    } else {
+      this.logger("Not notifying ship: " + aisData.name + ", " + aisData.bearing.toFixed(2) + ", " + aisData.bearingAsText + ", " + aisData.distance.toFixed(2) + ", " + aisData.speedOverGround + ", " + aisData.courseOverGround + ", " + aisData.courseAsText + ", " + aisData.lastNotified + ", " + Date.now() + ", " + (Date.now() - aisData.lastNotified) + ", " + (Date.now() - aisData.lastNotified > 600000));
+    }
+
   }
 
   shipTypeAsText(shipType) {
