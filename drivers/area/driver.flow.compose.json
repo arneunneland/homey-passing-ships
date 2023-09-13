@@ -3,8 +3,8 @@
     {
       "id": "passingShipName",
       "title": {
-        "en": "Passing ship",
-        "no": "Passerende skip"
+        "en": "Passing ship with name",
+        "no": "Passerende skip med navn"
       },
       "titleFormatted": { "en": "[[name]] is passing" },
       "args": [
@@ -51,8 +51,8 @@
     {
       "id": "passingShipComingFrom",
       "title": {
-        "en": "Passing ship",
-        "no": "Passerende skip"
+        "en": "Passing ship from course",
+        "no": "Passerende skip fra kurs"
       },
       "titleFormatted": { "en": "Ship is passing from [[comingFrom]]" },
       "args": [
@@ -99,8 +99,8 @@
     {
       "id": "passingShipSpeed",
       "title": {
-        "en": "Passing ship",
-        "no": "Passerende skip"
+        "en": "Passing ship with speed over",
+        "no": "Passerende skip med fart over"
       },
       "titleFormatted": { "en": "Ship is passing at speed over [[speed]] kn" },
       "args": [
@@ -147,8 +147,8 @@
     {
       "id": "passingShipLength",
       "title": {
-        "en": "Passing ship",
-        "no": "Passerende skip"
+        "en": "Passing ship with length over",
+        "no": "Passerende skip med lengde over"
       },
       "titleFormatted": { "en": "Ship is passing with length over [[length]] m" },
       "args": [

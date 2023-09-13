@@ -11,8 +11,8 @@
     "no": "Passerende Skip"
   },
   "description": {
-    "en": "Adds support for Passing Ships in Norway. AIS data from Norwegian Coastal Administration and Barentswatch",
-    "no": "Gir varsel om passerede skip. AIS data hentes fra Kystverket via Barentswatch"
+    "en": "Get alerts for ships entering your specified area",
+    "no": "Få varsler for skip i ditt valgte område"
   },
   "category": [
     "localization"

@@ -12,8 +12,8 @@
     "no": "Passerende Skip"
   },
   "description": {
-    "en": "Adds support for Passing Ships in Norway. AIS data from Norwegian Coastal Administration and Barentswatch",
-    "no": "Gir varsel om passerede skip. AIS data hentes fra Kystverket via Barentswatch"
+    "en": "Get alerts for ships entering your specified area",
+    "no": "Få varsler for skip i ditt valgte område"
   },
   "category": [
     "localization"
@@ -42,8 +42,8 @@
       {
         "id": "passingShipName",
         "title": {
-          "en": "Passing ship",
-          "no": "Passerende skip"
+          "en": "Passing ship with name",
+          "no": "Passerende skip med navn"
         },
         "titleFormatted": {
           "en": "[[name]] is passing"
@@ -121,8 +121,8 @@
       {
         "id": "passingShipComingFrom",
         "title": {
-          "en": "Passing ship",
-          "no": "Passerende skip"
+          "en": "Passing ship from course",
+          "no": "Passerende skip fra kurs"
         },
         "titleFormatted": {
           "en": "Ship is passing from [[comingFrom]]"
@@ -200,8 +200,8 @@
       {
         "id": "passingShipSpeed",
         "title": {
-          "en": "Passing ship",
-          "no": "Passerende skip"
+          "en": "Passing ship with speed over",
+          "no": "Passerende skip med fart over"
         },
         "titleFormatted": {
           "en": "Ship is passing at speed over [[speed]] kn"
@@ -279,8 +279,8 @@
       {
         "id": "passingShipLength",
         "title": {
-          "en": "Passing ship",
-          "no": "Passerende skip"
+          "en": "Passing ship with length over",
+          "no": "Passerende skip med lengde over"
         },
         "titleFormatted": {
           "en": "Ship is passing with length over [[length]] m"
