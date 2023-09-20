@@ -123,6 +123,10 @@ class AisWatcher {
       aisData.lastNotified = oldAisData.lastNotified;
       aisData.lastMoved = oldAisData.lastMoved;
     }
+        
+    if (aisData.shipLength !== 'number') {
+      aisData.shipLength = 0;
+    }
 
     if (+aisData.speedOverGround >= 1) {
       aisData.lastMoved = new Date();
