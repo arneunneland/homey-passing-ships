@@ -172,6 +172,9 @@ class AisWatcher {
           comingFrom: aisData.comingFromAsText,
           speed: aisData.speedOverGround, 
           length: aisData.shipLength,
+          width: aisData.shipWidth,
+          destination: aisData.destination,
+          shipType: this.shipTypeAsText(aisData.shipType),           
           wasStopped: wasStopped
         };
       this.eventEmitter.emit('passingship', data);

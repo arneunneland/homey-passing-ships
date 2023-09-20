@@ -115,6 +115,36 @@
             "example": {
               "en": "12.4"
             }
+          },
+          {
+            "name": "width",
+            "type": "number",
+            "title": {
+              "en": "width in m"
+            },
+            "example": {
+              "en": "4"
+            }
+          },
+          {
+            "name": "destination",
+            "type": "string",
+            "title": {
+              "en": "Destination"
+            },
+            "example": {
+              "en": "NOAES"
+            }
+          },
+          {
+            "name": "shipType",
+            "type": "string",
+            "title": {
+              "en": "Ship type"
+            },
+            "example": {
+              "en": "Fiske"
+            }
           }
         ]
       },
@@ -193,6 +223,36 @@
             },
             "example": {
               "en": "12.4"
+            }
+          },
+          {
+            "name": "width",
+            "type": "number",
+            "title": {
+              "en": "width in m"
+            },
+            "example": {
+              "en": "4"
+            }
+          },
+          {
+            "name": "destination",
+            "type": "string",
+            "title": {
+              "en": "Destination"
+            },
+            "example": {
+              "en": "NOAES"
+            }
+          },
+          {
+            "name": "shipType",
+            "type": "string",
+            "title": {
+              "en": "Ship type"
+            },
+            "example": {
+              "en": "Fiske"
             }
           }
         ]
@@ -273,6 +333,36 @@
             "example": {
               "en": "12.4"
             }
+          },
+          {
+            "name": "width",
+            "type": "number",
+            "title": {
+              "en": "width in m"
+            },
+            "example": {
+              "en": "4"
+            }
+          },
+          {
+            "name": "destination",
+            "type": "string",
+            "title": {
+              "en": "Destination"
+            },
+            "example": {
+              "en": "NOAES"
+            }
+          },
+          {
+            "name": "shipType",
+            "type": "string",
+            "title": {
+              "en": "Ship type"
+            },
+            "example": {
+              "en": "Fiske"
+            }
           }
         ]
       },
@@ -352,6 +442,36 @@
             "example": {
               "en": "12.4"
             }
+          },
+          {
+            "name": "width",
+            "type": "number",
+            "title": {
+              "en": "width in m"
+            },
+            "example": {
+              "en": "4"
+            }
+          },
+          {
+            "name": "destination",
+            "type": "string",
+            "title": {
+              "en": "Destination"
+            },
+            "example": {
+              "en": "NOAES"
+            }
+          },
+          {
+            "name": "shipType",
+            "type": "string",
+            "title": {
+              "en": "Ship type"
+            },
+            "example": {
+              "en": "Fiske"
+            }
           }
         ]
       },
@@ -413,6 +533,36 @@
             },
             "example": {
               "en": "12.4"
+            }
+          },
+          {
+            "name": "width",
+            "type": "number",
+            "title": {
+              "en": "width in m"
+            },
+            "example": {
+              "en": "4"
+            }
+          },
+          {
+            "name": "destination",
+            "type": "string",
+            "title": {
+              "en": "Destination"
+            },
+            "example": {
+              "en": "NOAES"
+            }
+          },
+          {
+            "name": "shipType",
+            "type": "string",
+            "title": {
+              "en": "Ship type"
+            },
+            "example": {
+              "en": "Fiske"
             }
           }
         ],
