@@ -124,7 +124,7 @@ class AisWatcher {
       aisData.lastMoved = oldAisData.lastMoved;
     }
         
-    if (aisData.shipLength !== 'number') {
+    if (isNaN(aisData.shipLength)) {
       aisData.shipLength = 0;
     }
 
@@ -142,7 +142,7 @@ class AisWatcher {
 
     const pad = (i) => (i < 10) ? "0" + i : "" + i;
     const logDate = (date) => (date ? pad(date.getHours()) + ":" + pad(date.getMinutes()) + ":" + pad(date.getSeconds()) : "-");  
-    this.logger("AIS: " + aisData.name + ", " + aisData.bearing.toFixed(2) + ", " + aisData.bearingAsText + ", " + aisData.distance.toFixed(2) + ", " + aisData.speedOverGround + ", " + aisData.courseOverGround + ", " + aisData.courseAsText + ", " + logDate(aisData.lastMoved) + ", " + logDate(aisData.lastNotified));
+    this.logger("AIS: " + JSON.stringify(aisData));
     this.ships.set(aisData.mmsi, aisData);
 
     for (var [key, value] of this.ships) {
@@ -162,7 +162,7 @@ class AisWatcher {
       notify = true;
     }
     if (notify) {
-      this.logger("Detected new ship: " + aisData.name + ", " + aisData.bearing.toFixed(2) + ", " + aisData.bearingAsText + ", " + aisData.distance.toFixed(2) + ", " + aisData.speedOverGround + ", " + aisData.courseOverGround + ", " + aisData.courseAsText);
+      this.logger("Detected new ship: " + aisData.name);
 
       aisData.lastNotified = new Date();
   
@@ -181,8 +181,6 @@ class AisWatcher {
     } else {
       this.logger("Not notifying ship: " + aisData.name + ", " + aisData.bearing.toFixed(2) + ", " + aisData.bearingAsText + ", " + aisData.distance.toFixed(2) + ", " + aisData.speedOverGround + ", " + aisData.courseOverGround + ", " + aisData.courseAsText + ", " + aisData.lastNotified + ", " + Date.now() + ", " + (Date.now() - aisData.lastNotified) + ", " + (Date.now() - aisData.lastNotified > 600000));
     }
-
-  }
 
   shipTypeAsText(shipType) {
     const shipTypeCodeMap = new Map([
@@ -240,6 +238,7 @@ class AisWatcher {
           closestShip = value;
           closestShipCourse = value.courseAsText + " " + value.speedOverGround + " kn";
           closestShipBearing = value.bearingAsText + " " + Math.round(value.distance * 100) / 100 + " km";
+          closestShipDistance = value.distance;
         }
       }
     }
