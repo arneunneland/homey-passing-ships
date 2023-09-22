@@ -169,6 +169,7 @@ class AisWatcher {
       var data = { 
           name: aisData.name, 
           course: aisData.courseAsText, 
+          bearing: aisData.bearingAsText,
           comingFrom: aisData.comingFromAsText,
           speed: aisData.speedOverGround, 
           length: aisData.shipLength,
@@ -181,6 +182,8 @@ class AisWatcher {
     } else {
       this.logger("Not notifying ship: " + aisData.name + ", " + aisData.bearing.toFixed(2) + ", " + aisData.bearingAsText + ", " + aisData.distance.toFixed(2) + ", " + aisData.speedOverGround + ", " + aisData.courseOverGround + ", " + aisData.courseAsText + ", " + aisData.lastNotified + ", " + Date.now() + ", " + (Date.now() - aisData.lastNotified) + ", " + (Date.now() - aisData.lastNotified > 600000));
     }
+  }
+  
 
   shipTypeAsText(shipType) {
     const shipTypeCodeMap = new Map([

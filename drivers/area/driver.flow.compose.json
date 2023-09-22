@@ -29,6 +29,12 @@
           "example": { "en": "V" }
         },
         {
+          "name": "bearing",
+          "type": "string",
+          "title": { "en": "Bearing" },
+          "example": { "en": "S" }
+        },
+        {
           "name": "comingFrom",
           "type": "string",
           "title": { "en": "Coming from" },
@@ -93,6 +99,12 @@
           "type": "string",
           "title": { "en": "Course" },
           "example": { "en": "V" }
+        },
+        {
+          "name": "bearing",
+          "type": "string",
+          "title": { "en": "Bearing" },
+          "example": { "en": "S" }
         },
         {
           "name": "comingFrom",
@@ -161,6 +173,12 @@
           "example": { "en": "V" }
         },
         {
+          "name": "bearing",
+          "type": "string",
+          "title": { "en": "Bearing" },
+          "example": { "en": "S" }
+        },
+        {
           "name": "comingFrom",
           "type": "string",
           "title": { "en": "Coming from" },
@@ -227,6 +245,12 @@
           "example": { "en": "V" }
         },
         {
+          "name": "bearing",
+          "type": "string",
+          "title": { "en": "Bearing" },
+          "example": { "en": "S" }
+        },
+        {
           "name": "comingFrom",
           "type": "string",
           "title": { "en": "Coming from" },
@@ -283,6 +307,12 @@
           "type": "string",
           "title": { "en": "Course" },
           "example": { "en": "V" }
+        },
+        {
+          "name": "bearing",
+          "type": "string",
+          "title": { "en": "Bearing" },
+          "example": { "en": "S" }
         },
         {
           "name": "comingFrom",
