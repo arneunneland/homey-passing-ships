@@ -167,20 +167,36 @@ class AisWatcher {
       aisData.lastNotified = new Date();
   
       var data = { 
-          name: aisData.name, 
-          course: aisData.courseAsText, 
-          bearing: aisData.bearingAsText,
-          comingFrom: aisData.comingFromAsText,
-          speed: aisData.speedOverGround, 
-          length: aisData.shipLength,
-          width: aisData.shipWidth,
-          destination: aisData.destination,
-          shipType: this.shipTypeAsText(aisData.shipType),           
+          name: this.ensureString(aisData.name), 
+          course: this.ensureString(aisData.courseAsText), 
+          bearing: this.ensureString(aisData.bearingAsText),
+          comingFrom: this.ensureString(aisData.comingFromAsText),
+          speed: this.ensureNumber(aisData.speedOverGround), 
+          length: this.ensureNumber(aisData.shipLength),
+          width: this.ensureNumber(aisData.shipWidth),
+          destination: this.ensureString(aisData.destination),
+          shipType: this.ensureString(this.shipTypeAsText(aisData.shipType)),           
           wasStopped: wasStopped
         };
       this.eventEmitter.emit('passingship', data);
     } else {
       this.logger("Not notifying ship: " + aisData.name + ", " + aisData.bearing.toFixed(2) + ", " + aisData.bearingAsText + ", " + aisData.distance.toFixed(2) + ", " + aisData.speedOverGround + ", " + aisData.courseOverGround + ", " + aisData.courseAsText + ", " + aisData.lastNotified + ", " + Date.now() + ", " + (Date.now() - aisData.lastNotified) + ", " + (Date.now() - aisData.lastNotified > 600000));
+    }
+  }
+
+  ensureString(value) {
+    if (typeof value === 'string' || value instanceof String) {
+      return value;
+    } else {
+      return "";
+    }   
+  }
+
+  ensureNumber(value) {
+    if (typeof value === 'number' || value instanceof Number) {
+      return value;
+    } else {
+      return 0;
     }
   }
   
