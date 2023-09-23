@@ -55,7 +55,7 @@
         {
           "name": "width",
           "type": "number",
-          "title": { "en": "width in m" },
+          "title": { "en": "Width in m" },
           "example": { "en": "4" }
         },
         {
@@ -127,7 +127,7 @@
         {
           "name": "width",
           "type": "number",
-          "title": { "en": "width in m" },
+          "title": { "en": "Width in m" },
           "example": { "en": "4" }
         },
         {
@@ -199,7 +199,7 @@
         {
           "name": "width",
           "type": "number",
-          "title": { "en": "width in m" },
+          "title": { "en": "Width in m" },
           "example": { "en": "4" }
         },
         {
@@ -271,7 +271,7 @@
         {
           "name": "width",
           "type": "number",
-          "title": { "en": "width in m" },
+          "title": { "en": "Width in m" },
           "example": { "en": "4" }
         },
         {
@@ -335,7 +335,7 @@
         {
           "name": "width",
           "type": "number",
-          "title": { "en": "width in m" },
+          "title": { "en": "Width in m" },
           "example": { "en": "4" }
         },
         {
