@@ -10,5 +10,8 @@
   },
   "0.9.3": {
     "en": "Bugfix and added tokens when event is triggered"
+  },
+  "0.9.4": {
+    "en": "Minor changes"
   }
 }
