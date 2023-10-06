@@ -1,0 +1,18 @@
+<script type="application/javascript">
+    Homey.emit("my_event", { foo: "bar" }).then(function (result) {
+      console.log(result); // result is: Hello!
+    });
+</script>
+
+<script type="application/javascript">
+    Homey.on("hello", function (message) {
+      Homey.alert(message); // Hello to you!
+      return "Hi!"; // send a reply back to the pairing session
+  
+      // you can return a promise if you need to do some async
+      // work before replying to the message.
+    });
+  </script>
+
+
+Test
