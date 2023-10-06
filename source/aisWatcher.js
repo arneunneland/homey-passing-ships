@@ -26,6 +26,7 @@ class AisWatcher {
 
   destroy() {
     this.aisFetcher.destroy();
+    this.aisFetcher = null;
   }
   
   updateSettings(latitude, longitude, clientId, clientSecret, area) {
