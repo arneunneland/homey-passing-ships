@@ -13,24 +13,17 @@ class MyDriver extends Driver {
   }
 
   async onPair(session) {
-    console.log("onPair starting");
     this.log("onPair starting");
 
     // Received when a view has changed
-    session.setHandler("showView", async function (viewId) {
-      this.log("View: " + viewId);
+    session.setHandler("getArea", async function (viewId) {
+      this.log("getArea running");
+      return {};
     });
 
-    session.setHandler("my_event", async function (data) {
-      // data is { 'foo': 'bar' }
-      return "Hello!";
-    });
-
-    session.setHandler("showView", async (viewId) => {
-      if (viewId === "area_view") {
-        const data = await session.emit("hello", "Hello to you!");
-        this.log(data); // Hi!
-      }
+    session.setHandler("updateArea", async function (data) {
+      this.log('updateArea running');
+      this.log(data);
     });
     this.log("handlers registered");
 

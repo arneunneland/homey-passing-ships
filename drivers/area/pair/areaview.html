@@ -1,18 +1,27 @@
-<script type="application/javascript">
-    Homey.emit("my_event", { foo: "bar" }).then(function (result) {
-      console.log(result); // result is: Hello!
+<script src="../../../assets/vue.min.js"></script>
+<link rel="stylesheet" href="../../../assets/bootstrap.min.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+<script>
+  Homey.setTitle("Velg område");
+  Homey.emit('getArea', null)
+    .then(data => {
+      new Vue({
+        el: "#area",
+        data: {
+        },
+        methods: {
+          characteristics() {
+            Homey.emit("updateArea", this.device).catch(error => { console.log(error) });
+          }
+        }
+      });
+    }).catch(error => {
+      console.log(error);
+      return;
     });
 </script>
 
-<script type="application/javascript">
-    Homey.on("hello", function (message) {
-      Homey.alert(message); // Hello to you!
-      return "Hi!"; // send a reply back to the pairing session
-  
-      // you can return a promise if you need to do some async
-      // work before replying to the message.
-    });
-  </script>
-
-
-Test
+<div id="area">
+  <h5>Please select area</h5>
+</div>
