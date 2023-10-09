@@ -16,12 +16,12 @@ class MyDriver extends Driver {
     this.log("onPair starting");
 
     // Received when a view has changed
-    session.setHandler("getArea", async function (viewId) {
-      this.log("getArea running");
+    session.setHandler("getArea", async (data) => {
+      this.log("getArea running.. " + data);
       return {};
     });
 
-    session.setHandler("updateArea", async function (data) {
+    session.setHandler("updateArea", async (data) => {
       this.log('updateArea running');
       this.log(data);
     });
