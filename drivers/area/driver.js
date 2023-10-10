@@ -27,7 +27,7 @@ class MyDriver extends Driver {
     });
     this.log("handlers registered");
 
-    await session.showView("areaview");
+    await session.showView("simpleview");
     await session.done();
   }
 
