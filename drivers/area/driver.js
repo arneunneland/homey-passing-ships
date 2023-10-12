@@ -2,7 +2,6 @@
 
 const { randomUUID } = require('crypto');
 const { Driver } = require('homey');
-
 class MyDriver extends Driver {
 
   /**
@@ -14,6 +13,7 @@ class MyDriver extends Driver {
 
   async onPair(session) {
     this.log("onPair starting");
+    this.log(session);
 
     // Received when a view has changed
     session.setHandler("getArea", async (data) => {
@@ -24,11 +24,11 @@ class MyDriver extends Driver {
     session.setHandler("updateArea", async (data) => {
       this.log('updateArea running');
       this.log(data);
+      await session.showView("second");
     });
     this.log("handlers registered");
 
-    await session.showView("simpleview");
-    await session.done();
+    await session.showView("first");
   }
 
  

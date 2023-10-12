@@ -16,7 +16,10 @@
   },
   "pair": [
     {
-      "id": "simpleview"
+      "id": "first"
+    },
+    {
+      "id": "second"
     },
     {
       "id": "done",

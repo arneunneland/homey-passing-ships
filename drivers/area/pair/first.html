@@ -1,24 +1,19 @@
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" crossorigin=""></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<script>
-  var L = window.L;
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
+<script src="https://unpkg.com/leaflet-draw@0.4.2/dist/leaflet.draw.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-draw@0.4.2/dist/leaflet.draw.css"/>
 
 <style>
   #map { height: 250px; }
 </style>
 <script>
-  console.log('start');
-  Homey.setTitle("Velg område2T");
+  Homey.setTitle("Velg område");
   Homey.emit('getArea', null)
     .then(data => {
       console.log('getArea response received');
     });
 
-  console.log('readyBeforeTimeout');
   setTimeout(() => {
     console.log('readyAfterTimeout');
     var map = L.map('map').setView([62.4722, 6.1495], 11);
@@ -28,7 +23,15 @@
     }).addTo(map);
 
     setTimeout(() => {
-      var drawControl = new L.Control.Draw();
+      var drawControl = new L.Control.Draw({
+        draw: {
+          polyline: false,
+          polygon: true,
+          circle: false,
+          rectangle: false,
+          marker: false
+        }
+      });
       map.addControl(drawControl);
 
       var drawnFeatures = new L.FeatureGroup();
@@ -37,18 +40,19 @@
       map.on('draw:created', function (e) {
         var type = e.layerType,
             layer = e.layer;
-
-        console.log(e);
+        
+        console.log(JSON.stringify(layer.toGeoJSON()));
+        Homey.emit("updateArea", JSON.stringify(layer.toGeoJSON()));
         drawnFeatures.addLayer(layer);
       });
     }, 1000);
-
   }, 2000)
-  console.log('end');
 </script>
 
 <div id="area">
-  <h3>Velg område2</h3>
+  <h3>Velg område</h3>
   
   <div id="map"></div>
+  <br/>
+  <div id="helpText">Tegn et polygon ved først å trykke på polygon knappen og markere opp området du ønsker å overvåke for skip</div>
 </div>
