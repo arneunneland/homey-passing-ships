@@ -19,9 +19,6 @@
       "id": "first"
     },
     {
-      "id": "second"
-    },
-    {
       "id": "done",
       "template": "done"
     }

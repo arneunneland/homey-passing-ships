@@ -659,9 +659,6 @@
           "id": "first"
         },
         {
-          "id": "second"
-        },
-        {
           "id": "done",
           "template": "done"
         }
@@ -698,7 +695,7 @@
           },
           "value": "",
           "hint": {
-            "en": "Longitude of the position - Overrides Homey position"
+            "en": "Longitude of the position - Overrides Homey position if used"
           }
         },
         {
@@ -709,7 +706,7 @@
           },
           "value": "",
           "hint": {
-            "en": "Longitude of the position - Overrides Homey position"
+            "en": "Longitude of the position - Overrides Homey position if used"
           }
         },
         {
@@ -720,7 +717,7 @@
           },
           "value": "",
           "hint": {
-            "en": "Paste GeoJSON. See example in app description"
+            "en": "Paste GeoJSON. See example in app description. !! Deprecated - not used for new devices"
           }
         }
       ]

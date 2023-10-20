@@ -18,20 +18,20 @@
         "type": "text",
         "label": { "en": "Longitude" },
         "value": "",
-        "hint": { "en": "Longitude of the position - Overrides Homey position" }
+        "hint": { "en": "Longitude of the position - Overrides Homey position if used" }
     },
     {
         "id": "latitude",
         "type": "text",
         "label": { "en": "Latitude" },
         "value": "",
-        "hint": { "en": "Longitude of the position - Overrides Homey position" }
+        "hint": { "en": "Longitude of the position - Overrides Homey position if used" }
     },
     {
         "id": "area",
         "type": "textarea",
         "label": { "en": "Area (polygon)" },
         "value": "",
-        "hint": { "en": "Paste GeoJSON. See example in app description" }
+        "hint": { "en": "Paste GeoJSON. See example in app description. !! Deprecated - not used for new devices" }
     }
 ]
