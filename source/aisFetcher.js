@@ -24,12 +24,14 @@ class AisFetcher {
 
   destroy() {
     this.homey.clearInterval(this.updateInterval);
+    if (this.aisReq) {
+      this.aisReq.destroy();
+    }
   }
 
-  updateSettings(clientId, clientSecret, area) {
+  updateSettings(clientId, clientSecret) {
     this.clientId = clientId;
     this.clientSecret = clientSecret;
-    this.area = area;
     this.updateData();
   }
 
@@ -124,7 +126,7 @@ class AisFetcher {
                 'Content-Length': Buffer.byteLength(postData) }
     };
 
-    var req = https.request(options, function(res) {
+    this.aisReq = https.request(options, function(res) {
       var chunks = [];
       res.setEncoding('utf8');
       aisObj.logger('AIS request: ' + res.statusCode);
@@ -155,24 +157,24 @@ class AisFetcher {
       });
     });
 
-    req.on('timeout', () => {
-      req.destroy();
+    this.aisReq.on('timeout', () => {
+      this.aisReq.destroy();
       aisObj.logger("AIS request timed out");
       aisObj.waitingForAis = false;
     });
 
-    req.on('close', () => {
-      req.destroy();
+    this.aisReq.on('close', () => {
+      this.aisReq.destroy();
       aisObj.logger("AIS request closed");
       aisObj.waitingForAis = false;
     });
 
-    req.on('error', function(e) {
+    this.aisReq.on('error', function(e) {
       aisObj.logger('problem with request: ' + e.message);
       aisObj.waitingForAis = false;
     });
-    req.write(postData);
-    req.end();
+    this.aisReq.write(postData);
+    this.aisReq.end();
   }
 
 }
