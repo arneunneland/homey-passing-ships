@@ -9,10 +9,6 @@
 </style>
 <script>
   Homey.setTitle("Velg område");
-  Homey.emit('getArea', null)
-    .then(data => {
-      console.log('getArea response received');
-    });
 
   setTimeout(() => {
     console.log('readyAfterTimeout');
@@ -40,19 +36,49 @@
       map.on('draw:created', function (e) {
         var type = e.layerType,
             layer = e.layer;
-        
-        console.log(JSON.stringify(layer.toGeoJSON()));
-        Homey.emit("updateArea", JSON.stringify(layer.toGeoJSON()));
-        drawnFeatures.addLayer(layer);
+
+        Homey.showLoadingOverlay()
+
+        var area = JSON.stringify(layer.toGeoJSON());
+        Homey.emit("updateArea", area);
+
+        Homey.createDevice({
+          // The name of the device that will be shown to the user
+          name: "Skipsområde",
+
+          // The data object is required and should contain only unique properties for the device.
+          // So a MAC address is good, but an IP address is bad (can change over time)
+          data: {
+            id: "abcd",
+          },
+
+          // Optional: The store is dynamic and persistent storage for your device
+          store: {
+            // For example store the IP address of your device
+            area: area
+          },
+
+          // Optional: Initial device settings that can be changed by the user afterwards
+          settings: {
+          },
+        })
+          .then(function (result) {
+            Homey.done();
+          })
+          .catch(function (error) {
+            Homey.alert(error);
+          });
       });
     }, 1000);
   }, 2000)
 </script>
 
 <div id="area">
-  <h3>Velg område</h3>
+  <h3>Velg område:</h3>
   
   <div id="map"></div>
   <br/>
   <div id="helpText">Tegn et polygon ved først å trykke på polygon knappen og markere opp området du ønsker å overvåke for skip</div>
+  <br>
+  <div id="helpText">Husk at du også må gå inn på innstillinger på appen og legge inn clientId og clientSecret fra Barentswatch sitt API (se info på Homey App siden)</div>
 </div>
