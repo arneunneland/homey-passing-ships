@@ -10,6 +10,8 @@ class MyDevice extends Device {
    */
   async onInit() {
     const settings = this.getSettings();
+    const store = this.getStore();
+    
     if (settings.latitude) {
       this.latitude = parseFloat(settings.latitude);
     } else {
@@ -22,7 +24,13 @@ class MyDevice extends Device {
     }
     this.clientId = settings.clientId;
     this.clientSecret = settings.clientSecret;
-    this.area = settings.area;
+    if (store.area) {
+      this.log("Using store area");
+      this.area = store.area;
+    } else {
+      this.log("Using settings area (legacy)");
+      this.area = settings.area;
+    }
 
     this.logger = this.homey.app.logger;
     this.aisWatcher = new AisWatcher(this.homey, this.logger, this.latitude, this.longitude, this.clientId, this.clientSecret, this.area); 
@@ -109,9 +117,8 @@ class MyDevice extends Device {
     }
     this.clientId = newSettings.clientId;
     this.clientSecret = newSettings.clientSecret;
-    this.area = newSettings.area;
 
-    this.aisWatcher.updateSettings(this.latitude, this.longitude, this.clientId, this.clientSecret, this.area);
+    this.aisWatcher.updateSettings(this.latitude, this.longitude, this.clientId, this.clientSecret);
   }
 
   /**

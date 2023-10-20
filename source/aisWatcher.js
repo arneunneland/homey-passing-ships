@@ -25,14 +25,15 @@ class AisWatcher {
   }
 
   destroy() {
+    this.destroyed = true;
     this.aisFetcher.destroy();
     this.aisFetcher = null;
   }
   
-  updateSettings(latitude, longitude, clientId, clientSecret, area) {
+  updateSettings(latitude, longitude, clientId, clientSecret) {
     this.latitude = latitude;
     this.longitude = longitude;
-    this.aisFetcher.updateSettings(clientId, clientSecret, area);
+    this.aisFetcher.updateSettings(clientId, clientSecret);
     this.aisFetcher.updateData();
   }
 
@@ -92,6 +93,9 @@ class AisWatcher {
   }
 
   handleAisString(aisText) {
+    if (this.destroyed) {
+      return;
+    }
     aisText.split("\n").forEach((line, index) => {
       if (line.length > 10 ) {
         try {
