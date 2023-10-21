@@ -135,6 +135,7 @@ class AisWatcher {
 
     if (+aisData.speedOverGround >= 1) {
       aisData.lastMoved = new Date();
+      this.logger(`AIS: ${aisData.name} - Bearing: ${aisData.bearingAsText}, Course: ${aisData.courseAsText}, Speed: ${aisData.speedOverGround.toFixed(2)} knots, Position: ${aisData.latitude.toFixed(4)}, ${aisData.longitude.toFixed(4)}`);
 
       if (oldAisData) {
         if (oldAisData.lastMoved && (Date.now() - oldAisData.lastMoved > 600000)) {
@@ -145,9 +146,6 @@ class AisWatcher {
       }
     }
 
-    const pad = (i) => (i < 10) ? "0" + i : "" + i;
-    const logDate = (date) => (date ? pad(date.getHours()) + ":" + pad(date.getMinutes()) + ":" + pad(date.getSeconds()) : "-");  
-    this.logger("AIS: " + JSON.stringify(aisData));
     this.ships.set(aisData.mmsi, aisData);
 
     for (var [key, value] of this.ships) {
