@@ -7,6 +7,15 @@
     document.getElementById("loginResult").innerHTML = "Login failed";
   });
 
+  Homey.emit('getInfo', null)
+    .then(data => {
+      console.log('getInfo response received');
+      store = data;
+      if (store.clientId && store.clientSecret) {
+        document.getElementById("loginArea").style.display = "none";
+      }
+    });
+
   const testLoginButton = document.getElementById("testLogin");
   
   testLoginButton.addEventListener("click", () => {
@@ -30,6 +39,7 @@
   <br/>
   Skipsområde: <input type="text" id="name" placeholder="Skipsområde" /> (f.eks. Drøbaksundet, Breisundet, Bergen...)
 
+  <span id="loginArea">
   <br/>
   <h3>Logg inn på Barentswatch API:</h3>
   
@@ -40,6 +50,7 @@
   ClientID: <input type="text" id="clientID" placeholder="ClientID" />
   <br/>
   ClientSecret: <input type="password" id="clientSecret" placeholder="ClientSecret" />
+  </span>
   <br/>
-  <div id="helpText"><button id="testLogin">Test login</button> <span id="loginResult"></span></div>
+  <div id="helpText"><button id="testLogin">Neste</button> <span id="loginResult"></span></div>
 </div>

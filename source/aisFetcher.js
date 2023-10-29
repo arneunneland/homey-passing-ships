@@ -151,7 +151,7 @@ class AisFetcher {
           aisObj.logger("body: " + body);
           aisObj.logger("ending AIS request");
         } else {
-          aisObj.eventEmitter.emit('config', { text: 'Config: Failed AIS request, check area' });   
+          aisObj.eventEmitter.emit('config', { text: 'Feil request: ' + res.statusCode + ' ' + res.statusMessage });   
         }
         aisObj.waitingForAis = false;
       });

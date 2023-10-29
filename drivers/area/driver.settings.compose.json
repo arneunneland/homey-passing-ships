@@ -26,12 +26,5 @@
         "label": { "en": "Latitude" },
         "value": "",
         "hint": { "en": "Longitude of the position - Overrides Homey position if used" }
-    },
-    {
-        "id": "area",
-        "type": "textarea",
-        "label": { "en": "Area (polygon)" },
-        "value": "",
-        "hint": { "en": "Paste GeoJSON. See example in app description. !! Deprecated - not used for new devices" }
     }
 ]

@@ -102,7 +102,7 @@ class AisWatcher {
           var aisData = JSON.parse(line);
           this.handleAis(aisData);
         } catch (error) {
-          this.logger("Error parsing AIS data: " + error + ";" + line);
+          this.logger("Error parsing AIS data: " + error + ";" + line + ";" + aisText);
         }
       }
     });
