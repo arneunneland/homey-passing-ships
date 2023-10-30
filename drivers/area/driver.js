@@ -50,7 +50,7 @@ class MyDriver extends Driver {
     this.log("onPair starting");
     this.log(session);
 
-    this.store = {};
+    this.store = { isAddable: this.getDevices().length < 3 };
     session.setHandler("getInfo", async (data) => {
       return this.store;
     });

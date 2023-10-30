@@ -1,7 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 
 <script>
-  Homey.setTitle("Logg inn på Barentswatch API");
+Homey.setTitle("Logg inn på API");
 
   Homey.on("loginFailed", function () {
     document.getElementById("loginResult").innerHTML = "Login failed";
@@ -12,7 +12,12 @@
       console.log('getInfo response received');
       store = data;
       if (store.clientId && store.clientSecret) {
+        Homey.setTitle("Velg navn på skipsområde");
         document.getElementById("loginArea").style.display = "none";
+      }
+      if (!store.isAddable) {
+        Homey.setTitle("Maks tre skipsområder");
+        document.getElementById("area").innerHTML = "Du kan legge til maksimalt 3 skipsområder. Hvis du vil legge til flere må du slette et av de eksisterende.";
       }
     });
 

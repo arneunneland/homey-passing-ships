@@ -13,7 +13,6 @@
   Homey.emit('getInfo', null)
     .then(data => {
       console.log('getInfo response received');
-      console.log(data);
       store = data;
     });
 
@@ -72,13 +71,15 @@
           },
         };
 
-        Homey.createDevice(deviceData)
+        if (store.isAddable) {
+          Homey.createDevice(deviceData)
           .then(function (result) {
             Homey.done();
           })
           .catch(function (error) {
             Homey.alert(error);
           });
+        }
       });
     }, 1000);
   }, 2000)
@@ -89,7 +90,5 @@
   
   <div id="map"></div>
   <br/>
-  <div id="helpText">Tegn et polygon ved først å trykke på polygon knappen og markere opp området du ønsker å overvåke for skip</div>
-  <br>
-  <div id="helpText">Husk at du også må gå inn på innstillinger på enheten og legge inn clientId og clientSecret fra Barentswatch sitt API (se info på Homey App siden)</div>
+  <div id="helpText">Tegn et polygon ved først å trykke på polygon knappen (det hender den ikke viser, da prøver du igjen), og markere opp området du ønsker å overvåke for skip</div>
 </div>
