@@ -12,6 +12,7 @@ class AisWatcher {
     this.latitude = latitude;
     this.longitude = longitude;
     this.ships = new Map();
+    this.lastStatus = this.currentTimeAsString();
 
     this.aisFetcher = new AisFetcher(this.homey, this.logger, clientId, clientSecret, area);
 
@@ -22,6 +23,20 @@ class AisWatcher {
     this.aisFetcher.eventEmitter.on('ais', async (data) => {
       this.handleAisString(data);
     });
+    this.publishEvent();
+    homey.setInterval(() => {
+      this.cleanAndPublishEvent();
+    }, 30000);
+  }
+
+  cleanAndPublishEvent() {
+    for (var [key, value] of this.ships) {
+      if(Date.now() - value.localTime > 180000) {
+        this.logger("Removing ship: " + value.name);
+        this.ships.delete(key);
+      }
+    }
+    this.publishEvent();
   }
 
   destroy() {
@@ -147,13 +162,15 @@ class AisWatcher {
     }
 
     this.ships.set(aisData.mmsi, aisData);
+    this.lastStatus = this.currentTimeAsString();
 
-    for (var [key, value] of this.ships) {
-      if(Date.now() - value.localTime > 180000) {
-        this.ships.delete(key);
-      }
-    }
     this.publishEvent();
+  }
+
+  currentTimeAsString() {
+    const pad = (i) => (i < 10) ? "0" + i : "" + i;
+    const currentTime = new Date();
+    return pad(currentTime.getHours()) + ":" + pad(currentTime.getMinutes()) + ":" + pad(currentTime.getSeconds());
   }
 
   triggerNewShip(aisData, wasStopped) {
@@ -242,10 +259,7 @@ class AisWatcher {
   }
 
   publishEvent() {
-    const pad = (i) => (i < 10) ? "0" + i : "" + i;
-    const currentTime = new Date();
-    var lastStatus = pad(currentTime.getHours()) + ":" + pad(currentTime.getMinutes()) + ":" + pad(currentTime.getSeconds());
-
+    
     var closestShip = null;
     var closestShipCourse = null;
     var closestShipDistance = 1000;
@@ -266,7 +280,7 @@ class AisWatcher {
     }
     this.eventEmitter.emit('update', { 
       numberOfShips: numberOfShips, 
-      lastStatus: lastStatus, 
+      lastStatus: this.lastStatus, 
       closestShip: (closestShip ? closestShip.name : "-"),
       length: (closestShip ? closestShip.shipLength : null),
       width: (closestShip ? closestShip.shipWidth : null),

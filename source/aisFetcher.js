@@ -36,10 +36,14 @@ class AisFetcher {
   }
 
   async updateData() {
+    this.logger("updateData starting");
     if (!this.waitingForAis || (Date.now() - this.lastAisData > 320000)) {
+      this.logger("updateData fetching new data");
       if (this.fetchNewBearerToken || (Date.now() - this.lastAisData > 320000)) {
+        this.logger("updateData fetching new bearer token");
         this.fetchNewBearerTokenAndFetchAisData(this.clientId, this.clientSecret);
       } else {
+        this.logger("updateData fetching new AIS data");
         this.fetchAisData(this.bearerToken);
       }
     }
@@ -93,6 +97,7 @@ class AisFetcher {
   }
 
   async fetchAisData(token) {
+    this.logger("fetchAisData starting");
     var aisObj = this;
 
     if (!this.area) {
