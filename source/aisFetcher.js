@@ -19,7 +19,7 @@ class AisFetcher {
     this.updateData();
     this.updateInterval = this.homey.setInterval(async () => {
       this.updateData();
-    }, 30000);
+    }, 35000);
   }
 
   destroy() {
